@@ -1,0 +1,109 @@
+/* VARIABLES */
+@import './colors';
+
+/* SITE */
+*,
+*::after,
+*::before {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	text-decoration: none;
+	list-style: none;
+}
+
+html {
+	font-size: 62.5%;
+}
+
+body {
+	font-family: 'Commissioner', sans-serif;
+	min-height: 100vh;
+}
+
+/* NAV */
+nav {
+	position: relative;
+	height: 30rem;
+	padding: 2rem;
+	background: url('/images/image-hero-mobile.jpg') center no-repeat;
+	background-size: cover;
+}
+
+nav::before {
+	content: '';
+	position: absolute;
+	inset: 0;
+	width: 100%;
+	height: 100%;
+	box-shadow: inset 0px 15rem 5rem -5rem rgba(0, 0, 0, 0.5);
+}
+
+.nav {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-top: 1rem;
+
+	&__logo {
+		position: relative;
+		z-index: 1;
+	}
+
+	&__desktop {
+		display: none;
+	}
+}
+
+.mobile-btn {
+	position: relative;
+	cursor: pointer;
+	border: none;
+	background: transparent;
+	z-index: 1;
+
+	&__close-icon {
+		display: none;
+	}
+}
+
+.mobile-linkbox {
+	display: none;
+	font-size: 1.6rem;
+	position: absolute;
+	inset: 0;
+	width: auto;
+	height: max-content;
+	margin: 9rem 2rem 0;
+	border-radius: 1rem;
+	background-color: #fff;
+
+	li {
+		a {
+			font-weight: 500;
+			display: block;
+			width: auto;
+			padding: 2.5rem;
+			border-bottom: 1px solid $dark_gray;
+			color: $black;
+			cursor: pointer;
+		}
+	}
+
+	li:nth-child(3) {
+		a {
+			border-bottom: none;
+		}
+	}
+}
+
+/* ARTICLE */
+
+/* SECTION */
+
+/* MEDIA QUERIES */
+
+@media (min-width: 500px) {
+}
+
+// 16px is standard

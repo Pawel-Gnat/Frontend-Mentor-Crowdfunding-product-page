@@ -1,0 +1,107 @@
+/* VARIABLES */
+/* SITE */
+*,
+*::after,
+*::before {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  list-style: none;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: 'Commissioner', sans-serif;
+  min-height: 100vh;
+}
+
+/* NAV */
+nav {
+  position: relative;
+  height: 30rem;
+  padding: 2rem;
+  background: url("/images/image-hero-mobile.jpg") center no-repeat;
+  background-size: cover;
+}
+
+nav::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  -webkit-box-shadow: inset 0px 15rem 5rem -5rem rgba(0, 0, 0, 0.5);
+          box-shadow: inset 0px 15rem 5rem -5rem rgba(0, 0, 0, 0.5);
+}
+
+.nav {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-top: 1rem;
+}
+
+.nav__logo {
+  position: relative;
+  z-index: 1;
+}
+
+.nav__desktop {
+  display: none;
+}
+
+.mobile-btn {
+  position: relative;
+  cursor: pointer;
+  border: none;
+  background: transparent;
+  z-index: 1;
+}
+
+.mobile-btn__close-icon {
+  display: none;
+}
+
+.mobile-linkbox {
+  display: none;
+  font-size: 1.6rem;
+  position: absolute;
+  inset: 0;
+  width: auto;
+  height: -webkit-max-content;
+  height: -moz-max-content;
+  height: max-content;
+  margin: 9rem 2rem 0;
+  border-radius: 1rem;
+  background-color: #fff;
+}
+
+.mobile-linkbox li a {
+  font-weight: 500;
+  display: block;
+  width: auto;
+  padding: 2.5rem;
+  border-bottom: 1px solid #7a7a7a;
+  color: black;
+  cursor: pointer;
+}
+
+.mobile-linkbox li:nth-child(3) a {
+  border-bottom: none;
+}
+
+/* ARTICLE */
+/* SECTION */
+/* MEDIA QUERIES */
+/*# sourceMappingURL=style.css.map */
