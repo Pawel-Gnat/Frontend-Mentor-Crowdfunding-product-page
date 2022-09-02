@@ -1,5 +1,6 @@
 /* VARIABLES */
 @import './colors';
+@import './mixins';
 
 /* SITE */
 *,
@@ -19,6 +20,10 @@ html {
 body {
 	font-family: 'Commissioner', sans-serif;
 	min-height: 100vh;
+}
+
+button {
+	font-family: 'Commissioner', sans-serif;
 }
 
 /* NAV */
@@ -84,7 +89,7 @@ nav::before {
 			display: block;
 			width: auto;
 			padding: 2.5rem;
-			border-bottom: 1px solid $dark_gray;
+			border-bottom: 1px solid rgba($dark_gray, 0.1);
 			color: $black;
 			cursor: pointer;
 		}
@@ -97,9 +102,104 @@ nav::before {
 	}
 }
 
-/* ARTICLE */
+/* MAIN */
+
+main {
+	background-color: rgb(250, 250, 250);
+}
 
 /* SECTION */
+
+.general {
+	@include cards;
+	padding: 5rem 2.5rem 4rem;
+	text-align: center;
+
+	&__logo {
+		position: absolute;
+		display: block;
+		top: 0;
+		left: 50%;
+		height: 5.5rem;
+		transform: translate3d(-50%, -50%, 0);
+	}
+
+	&__heading {
+		font-size: 2rem;
+		text-transform: capitalize;
+		margin: 0 2rem;
+	}
+
+	&__text {
+		@include gray-text;
+	}
+
+	&__mark {
+		display: flex;
+		justify-content: space-between;
+
+		&--btn1 {
+			@include btn;
+			margin: 2.5rem 0;
+		}
+
+		&--btn2 {
+			border: none;
+			background-color: transparent;
+			cursor: pointer;
+		}
+	}
+}
+
+.backers {
+	@include cards;
+	margin-top: 2.5rem;
+	padding: 2rem 2.5rem 4rem;
+	text-align: center;
+
+	&__textarea {
+		position: relative;
+		padding-bottom: 1rem;
+		margin-top: 2rem;
+
+		&--text1 {
+			font-size: 3.2rem;
+			font-weight: 700;
+		}
+
+		&--text2 {
+			@include gray-text;
+			margin: 1rem 0;
+		}
+	}
+
+	&__textarea:nth-child(1)::before,
+	&__textarea:nth-child(2)::before {
+		content: '';
+		position: absolute;
+		left: 50%;
+		bottom: 0;
+		height: 1px;
+		width: 30%;
+		border-bottom: 1px solid rgba($dark_gray, 0.3);
+		transform: translate3d(-50%, 0, 0);
+	}
+
+	&__progress-bar {
+		height: 1.3rem;
+		width: 100%;
+		background-color: rgba($dark_gray, 0.1);
+		border-radius: 100vw;
+		
+		&--bar {
+			display: block;
+			height: 100%;
+			width: 10%;
+			border-radius: 100vw;
+			background-color: $moderate_cyan;
+		}
+	}
+}
 
 /* MEDIA QUERIES */
 

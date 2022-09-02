@@ -1,0 +1,27 @@
+@mixin cards {
+	position: relative;
+	top: -5rem;
+	margin: 0 2rem;
+	border: 1px solid rgba($dark_gray, 0.1);
+	border-radius: 1rem;
+	background-color: #fff;
+}
+
+@mixin gray-text {
+	font-size: 1.4rem;
+	font-weight: 500;
+	line-height: 2.5rem;
+	color: $dark_gray;
+}
+
+@mixin btn {
+	font-size: 1.6rem;
+	font-weight: 500;
+	// padding: 0rem 4.5rem;
+	padding: 1.9rem 4.5rem;
+	border-radius: 100vw;
+	border: none;
+	color: #fff;
+	background-color: $moderate_cyan;
+	cursor: pointer;
+}
