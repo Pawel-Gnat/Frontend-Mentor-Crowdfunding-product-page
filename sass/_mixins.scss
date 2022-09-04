@@ -15,13 +15,11 @@
 }
 
 @mixin btn {
-	font-size: 1.6rem;
 	font-weight: 500;
-	// padding: 0rem 4.5rem;
-	padding: 1.9rem 4.5rem;
 	border-radius: 100vw;
 	border: none;
 	color: #fff;
 	background-color: $moderate_cyan;
 	cursor: pointer;
+	transition: background-color 0.3s;
 }
