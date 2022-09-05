@@ -167,7 +167,7 @@ section {
           justify-content: space-between;
 }
 
-.general__mark--btn1 {
+.btn1 {
   font-weight: 500;
   border-radius: 100vw;
   border: none;
@@ -182,20 +182,48 @@ section {
   padding: 0rem 4.5rem;
 }
 
-.general__mark--btn1:hover {
+.btn1:hover {
   background-color: #147b74;
 }
 
-.general__mark--btn2 {
+.btn2-container {
   margin-top: 2.5rem;
-  border: none;
-  background-color: transparent;
+  border-radius: 100vw;
+  background-color: rgba(122, 122, 122, 0.3);
   cursor: pointer;
   -webkit-transition: opacity 0.3s;
   transition: opacity 0.3s;
 }
 
-.general__mark--btn2:hover {
+.btn2-container__btn2 {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border: none;
+  background-color: transparent;
+  cursor: inherit;
+}
+
+.btn2-container__btn2 span {
+  font-size: 1.4rem;
+  font-weight: 500;
+  line-height: 2.5rem;
+  color: #7a7a7a;
+  font-weight: 700;
+  display: block;
+}
+
+.btn2-container:hover {
   opacity: 0.7;
 }
 
@@ -381,7 +409,7 @@ footer {
 }
 
 /* MEDIA QUERIES */
-@media (min-width: 500px) {
+@media (min-width: 576px) {
   .textarea {
     -webkit-box-orient: horizontal;
     -webkit-box-direction: normal;
@@ -391,9 +419,21 @@ footer {
         -ms-flex-pack: justify;
             justify-content: space-between;
   }
+  .textarea__money, .textarea__people, .textarea__days {
+    text-align: left;
+    width: 100%;
+  }
+  .textarea__people, .textarea__days {
+    margin-left: 5%;
+  }
   .textarea__money::before, .textarea__people::before {
-    height: 100px;
-    width: 100px;
+    left: 100%;
+    top: 5%;
+    height: 70%;
+    width: 0px;
+    border-right: 1px solid rgba(122, 122, 122, 0.3);
+    -webkit-transform: translate3d(0, 0, 0);
+            transform: translate3d(0, 0, 0);
   }
 }
 /*# sourceMappingURL=style.css.map */
