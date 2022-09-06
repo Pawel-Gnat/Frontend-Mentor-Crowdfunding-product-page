@@ -56,11 +56,20 @@ nav::before {
 
 	&__logo {
 		position: relative;
-		z-index: 1;
+		z-index: 2;
 	}
 
 	&__desktop {
 		display: none;
+		width: 100%;
+		text-align: right;
+		z-index: 1;
+
+		&--link {
+			@include gray-text;
+			margin-left: 3.5rem;
+			color: #fff;
+		}
 	}
 }
 
@@ -69,7 +78,11 @@ nav::before {
 	cursor: pointer;
 	border: none;
 	background: transparent;
-	z-index: 1;
+	z-index: 2;
+
+	&__open-icon {
+		display: block;
+	}
 
 	&__close-icon {
 		display: none;
@@ -86,6 +99,10 @@ nav::before {
 	margin: 9rem 2rem 0;
 	border-radius: 1rem;
 	background-color: #fff;
+	-webkit-box-shadow: 0px 0px 100rem 100rem rgba(0, 0, 0, 0.3);
+	-moz-box-shadow: 0px 0px 100rem 100rem rgba(0, 0, 0, 0.3);
+	box-shadow: 0px 0px 100rem 100rem rgba(0, 0, 0, 0.3);
+	z-index: 1;
 
 	li {
 		a {
@@ -104,6 +121,18 @@ nav::before {
 			border-bottom: none;
 		}
 	}
+}
+
+.opened {
+	display: block;
+}
+
+.closed {
+	display: none;
+}
+
+.overflow {
+	overflow: hidden;
 }
 
 /* MAIN */
@@ -160,32 +189,38 @@ section {
 	background-color: $dark_cyan;
 }
 
-.btn2-container {
+.btn2 {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
 	margin-top: 2.5rem;
 	border-radius: 100vw;
-	background-color: rgba($dark_gray, 0.3);
+	border: none;
+	background-color: rgba($dark_gray, 0.1);
 	cursor: pointer;
 	transition: opacity 0.3s;
 
-	&__btn2 {
-		display: flex;
-		flex-direction: row;
-		justify-content: center;
-		align-items: center;
-		border: none;
-		background-color: transparent;
-		cursor: inherit;
-
-		span {
-			@include gray-text;
-			font-weight: 700;
-			display: block;
-		}
+	&__text {
+		@include gray-text;
+		font-weight: 700;
+		display: block;
 	}
 }
 
-.btn2-container:hover {
+.margin {
+	margin: 0 2rem 0 1rem;
+}
+
+.btn2:hover {
 	opacity: 0.7;
+}
+
+.btn2-img-bookmarked {
+	filter: invert(22%) sepia(78%) saturate(4594%) hue-rotate(167deg) brightness(90%) contrast(84%);
+}
+
+.btn2-txt-bookmarked {
+	color: $dark_cyan;
 }
 
 .backers {
@@ -328,6 +363,16 @@ footer {
 /* MEDIA QUERIES */
 
 @media (min-width: 576px) {
+	.nav {
+		&__desktop {
+			display: block;
+		}
+	}
+
+	.mobile-btn {
+		display: none;
+	}
+
 	.textarea {
 		flex-direction: row;
 		justify-content: space-between;
@@ -354,6 +399,35 @@ footer {
 			transform: translate3d(0, 0, 0);
 		}
 	}
+
+	.product {
+		&__top {
+			flex-direction: row;
+			justify-content: space-between;
+
+			&--price-text {
+				margin-top: 0rem;
+			}
+		}
+
+		&__bottom {
+			flex-direction: row;
+			justify-content: space-between;
+
+			&--amount {
+				margin-bottom: 0rem;
+			}
+		}
+	}
 }
-// zrobic hamburger menu
-// zrobic media 500px sekca wplat i produktow
+
+@media (min-width: 992px) {
+	nav {
+		background: url('/images/image-hero-desktop.jpg') center no-repeat;
+	}
+}
+
+// zrobic animacje na hamburger menu
+// zrobic przycisk bookmark
+// zrobic clamp na textach
+// zrobic disable na 0 left divach

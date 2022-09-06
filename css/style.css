@@ -67,11 +67,23 @@ nav::before {
 
 .nav__logo {
   position: relative;
-  z-index: 1;
+  z-index: 2;
 }
 
 .nav__desktop {
   display: none;
+  width: 100%;
+  text-align: right;
+  z-index: 1;
+}
+
+.nav__desktop--link {
+  font-size: 1.4rem;
+  font-weight: 500;
+  line-height: 2.5rem;
+  color: #7a7a7a;
+  margin-left: 3.5rem;
+  color: #fff;
 }
 
 .mobile-btn {
@@ -79,7 +91,11 @@ nav::before {
   cursor: pointer;
   border: none;
   background: transparent;
-  z-index: 1;
+  z-index: 2;
+}
+
+.mobile-btn__open-icon {
+  display: block;
 }
 
 .mobile-btn__close-icon {
@@ -98,6 +114,9 @@ nav::before {
   margin: 9rem 2rem 0;
   border-radius: 1rem;
   background-color: #fff;
+  -webkit-box-shadow: 0px 0px 100rem 100rem rgba(0, 0, 0, 0.3);
+  box-shadow: 0px 0px 100rem 100rem rgba(0, 0, 0, 0.3);
+  z-index: 1;
 }
 
 .mobile-linkbox li a {
@@ -112,6 +131,18 @@ nav::before {
 
 .mobile-linkbox li:nth-child(3) a {
   border-bottom: none;
+}
+
+.opened {
+  display: block;
+}
+
+.closed {
+  display: none;
+}
+
+.overflow {
+  overflow: hidden;
 }
 
 /* MAIN */
@@ -186,16 +217,7 @@ section {
   background-color: #147b74;
 }
 
-.btn2-container {
-  margin-top: 2.5rem;
-  border-radius: 100vw;
-  background-color: rgba(122, 122, 122, 0.3);
-  cursor: pointer;
-  -webkit-transition: opacity 0.3s;
-  transition: opacity 0.3s;
-}
-
-.btn2-container__btn2 {
+.btn2 {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -203,18 +225,19 @@ section {
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  margin-top: 2.5rem;
+  border-radius: 100vw;
   border: none;
-  background-color: transparent;
-  cursor: inherit;
+  background-color: rgba(122, 122, 122, 0.1);
+  cursor: pointer;
+  -webkit-transition: opacity 0.3s;
+  transition: opacity 0.3s;
 }
 
-.btn2-container__btn2 span {
+.btn2__text {
   font-size: 1.4rem;
   font-weight: 500;
   line-height: 2.5rem;
@@ -223,8 +246,21 @@ section {
   display: block;
 }
 
-.btn2-container:hover {
+.margin {
+  margin: 0 2rem 0 1rem;
+}
+
+.btn2:hover {
   opacity: 0.7;
+}
+
+.btn2-img-bookmarked {
+  -webkit-filter: invert(22%) sepia(78%) saturate(4594%) hue-rotate(167deg) brightness(90%) contrast(84%);
+          filter: invert(22%) sepia(78%) saturate(4594%) hue-rotate(167deg) brightness(90%) contrast(84%);
+}
+
+.btn2-txt-bookmarked {
+  color: #147b74;
 }
 
 .backers {
@@ -410,6 +446,12 @@ footer {
 
 /* MEDIA QUERIES */
 @media (min-width: 576px) {
+  .nav__desktop {
+    display: block;
+  }
+  .mobile-btn {
+    display: none;
+  }
   .textarea {
     -webkit-box-orient: horizontal;
     -webkit-box-direction: normal;
@@ -434,6 +476,36 @@ footer {
     border-right: 1px solid rgba(122, 122, 122, 0.3);
     -webkit-transform: translate3d(0, 0, 0);
             transform: translate3d(0, 0, 0);
+  }
+  .product__top {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+  }
+  .product__top--price-text {
+    margin-top: 0rem;
+  }
+  .product__bottom {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+  }
+  .product__bottom--amount {
+    margin-bottom: 0rem;
+  }
+}
+
+@media (min-width: 992px) {
+  nav {
+    background: url("/images/image-hero-desktop.jpg") center no-repeat;
   }
 }
 /*# sourceMappingURL=style.css.map */
