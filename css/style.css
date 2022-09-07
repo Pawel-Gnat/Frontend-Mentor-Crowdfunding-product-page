@@ -1,4 +1,21 @@
 /* VARIABLES */
+@-webkit-keyframes moveIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes moveIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
 /* SITE */
 *,
 *::after,
@@ -103,7 +120,6 @@ nav::before {
 }
 
 .mobile-linkbox {
-  display: none;
   font-size: 1.6rem;
   position: absolute;
   inset: 0;
@@ -116,6 +132,9 @@ nav::before {
   background-color: #fff;
   -webkit-box-shadow: 0px 0px 100rem 100rem rgba(0, 0, 0, 0.3);
   box-shadow: 0px 0px 100rem 100rem rgba(0, 0, 0, 0.3);
+  opacity: 0;
+  -webkit-transition: opacity 0.3s;
+  transition: opacity 0.3s;
   z-index: 1;
 }
 
@@ -135,6 +154,7 @@ nav::before {
 
 .opened {
   display: block;
+  opacity: 1;
 }
 
 .closed {
@@ -254,9 +274,12 @@ section {
   opacity: 0.7;
 }
 
-.btn2-img-bookmarked {
-  -webkit-filter: invert(22%) sepia(78%) saturate(4594%) hue-rotate(167deg) brightness(90%) contrast(84%);
-          filter: invert(22%) sepia(78%) saturate(4594%) hue-rotate(167deg) brightness(90%) contrast(84%);
+.btn2-img-bookmarked1 {
+  fill: #fff;
+}
+
+.btn2-img-bookmarked2 {
+  fill: #147b74;
 }
 
 .btn2-txt-bookmarked {
@@ -285,7 +308,6 @@ section {
 .backers__progress-bar--bar {
   display: block;
   height: 100%;
-  width: 10%;
   border-radius: 100vw;
   background-color: #3cb4ac;
 }
