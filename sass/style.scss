@@ -366,6 +366,34 @@ footer {
 	top: -1rem;
 	text-align: center;
 }
+
+/* DIALOGS */
+
+.back-dialog {
+	padding: 3.5rem 2.5rem;
+	margin: 2.5rem;
+	border-radius: 1rem;
+	background-color: #fff;
+
+	&__heading {
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		align-items: center;
+		margin-bottom: 2.5rem;
+
+		&--text {
+			font-size: 1.8rem;
+		}
+
+		&--close-icon {
+			display: block;
+			width: 1.4rem;
+			height: 1.4rem;
+		}
+	}
+}
+
 /* MEDIA QUERIES */
 
 @media (min-width: 576px) {
@@ -430,6 +458,7 @@ footer {
 @media (min-width: 992px) {
 	nav {
 		background: url('/images/image-hero-desktop.jpg') center no-repeat;
+		background-size: cover;
 	}
 }
 

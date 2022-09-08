@@ -58,6 +58,7 @@ function handleProductStock() {
 			product.closest('.product').style.opacity = 0.4
 			product.parentElement.nextElementSibling.style.backgroundColor = 'rgb(122, 122, 122)'
 			product.parentElement.nextElementSibling.textContent = 'Out of stock'
+			product.parentElement.nextElementSibling.disabled = true
 		}
 	})
 }

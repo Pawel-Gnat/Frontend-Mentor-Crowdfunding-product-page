@@ -466,6 +466,41 @@ footer {
   text-align: center;
 }
 
+/* DIALOGS */
+.back-dialog {
+  padding: 3.5rem 2.5rem;
+  margin: 2.5rem;
+  border-radius: 1rem;
+  background-color: #fff;
+}
+
+.back-dialog__heading {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-bottom: 2.5rem;
+}
+
+.back-dialog__heading--text {
+  font-size: 1.8rem;
+}
+
+.back-dialog__heading--close-icon {
+  display: block;
+  width: 1.4rem;
+  height: 1.4rem;
+}
+
 /* MEDIA QUERIES */
 @media (min-width: 576px) {
   .nav__desktop {
@@ -528,6 +563,7 @@ footer {
 @media (min-width: 992px) {
   nav {
     background: url("/images/image-hero-desktop.jpg") center no-repeat;
+    background-size: cover;
   }
 }
 /*# sourceMappingURL=style.css.map */
