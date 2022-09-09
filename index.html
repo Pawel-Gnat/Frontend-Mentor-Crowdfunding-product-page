@@ -57,17 +57,17 @@
 
 		<section class="backers">
 			<div class="textarea">
-				<div class="textarea__money">
-					<p class="textarea__money--text1">$89,914</p>
-					<p class="textarea__money--text2">of $100,000 backed</p>
+				<div class="textarea__container">
+					<p class="textarea__container--text1">$89,914</p>
+					<p class="textarea__container--text2">of $100,000 backed</p>
 				</div>
-				<div class="textarea__people">
-					<p class="textarea__people--text1">5,007</p>
-					<p class="textarea__people--text2">total backers</p>
+				<div class="textarea__container">
+					<p class="textarea__container--text1">5,007</p>
+					<p class="textarea__container--text2">total backers</p>
 				</div>
-				<div class="textarea__days">
-					<p class="textarea__days--text1">56</p>
-					<p class="textarea__days--text2">days left</p>
+				<div class="textarea__container">
+					<p class="textarea__container--text1">56</p>
+					<p class="textarea__container--text2">days left</p>
 				</div>
 			</div>
 			<div class="backers__progress-bar">
@@ -90,13 +90,12 @@
 
 			<div class="product">
 				<div class="product__top">
-					<h3 class="product__top--heading">Bamboo Stand</h3>
-					<p class="product__top--price-text">Pledge 25$ or more</p>
+					<h3 class="product__top--heading"></h3>
+					<p class="product__top--price-text"></p>
 				</div>
-				<p class="product__text">You get an ergonomic stand made of natural bamboo. You've helped us
-					launch our promotional campaign, and you'll be added to a special Backer member list.</p>
+				<p class="product__text"></p>
 				<div class="product__bottom">
-					<div class="product__bottom--amount"><span class="number">101</span><span class="left">left</span>
+					<div class="product__bottom--amount"><span class="number"></span><span class="left">left</span>
 					</div>
 					<button class="product__bottom--btn">Select Reward</button>
 				</div>
@@ -104,13 +103,12 @@
 
 			<div class="product">
 				<div class="product__top">
-					<h3 class="product__top--heading">Black Edition Stand</h3>
-					<p class="product__top--price-text">Pledge 75$ or more</p>
+					<h3 class="product__top--heading"></h3>
+					<p class="product__top--price-text"></p>
 				</div>
-				<p class="product__text">You get a Black Special Edition computer stand and a personal thank you.
-					You'll be added to our Backer member list. Shipping is included.</p>
+				<p class="product__text"></p>
 				<div class="product__bottom">
-					<div class="product__bottom--amount"><span class="number">64</span><span class="left">left</span>
+					<div class="product__bottom--amount"><span class="number"></span><span class="left">left</span>
 					</div>
 					<button class="product__bottom--btn">Select Reward</button>
 				</div>
@@ -118,19 +116,17 @@
 
 			<div class="product">
 				<div class="product__top">
-					<h3 class="product__top--heading">Mahogany Special Edition</h3>
-					<p class="product__top--price-text">Pledge 200$ or more</p>
+					<h3 class="product__top--heading"></h3>
+					<p class="product__top--price-text"></p>
 				</div>
-				<p class="product__text">You get two Special Edition Mahogany stands, a Backer T-Shirt, and a
-					personal thank you. You'll be added to Our Backer member list. Shipping is included.</p>
+				<p class="product__text"></p>
 				<div class="product__bottom">
-					<div class="product__bottom--amount"><span class="number">0</span><span class="left">left</span>
+					<div class="product__bottom--amount"><span class="number"></span><span class="left">left</span>
 					</div>
 					<button class="product__bottom--btn">Select Reward</button>
 				</div>
 			</div>
 		</section>
-
 
 		<!-- //change that div to dialog later//  -->
 		<div id="dialog" class="back-dialog">
@@ -149,13 +145,32 @@
 						<div class="product-info__textarea">
 							<label for="no-reward" class="product-info__textarea--label">Pledge with no reward</label>
 						</div>
-						<div class="product-text">
-							<p class="product-text__text">Choose to support us without a reward if you simply believe in
-								our project. As a backer, you will be signed up to receive product updates via email.
-							</p>
-						</div>
+					</div>
+					<div class="product-text">
+						<p class="product-text__text">Choose to support us without a reward if you simply believe in
+							our project. As a backer, you will be signed up to receive product updates via email.
+						</p>
 					</div>
 				</div>
+
+				<div class="product-dialog">
+					<div class="product-info">
+						<input type="radio" name="no-reward" id="no-reward" value="Pledge with no reward"
+							class="product-info__input">
+						<div class="product-info__textarea">
+							<label for="no-reward" class="product-info__textarea--label">Pledge with no reward</label>
+							<p class="product-info__textarea--pledge"></p>
+						</div>
+					</div>
+					<div class="product-text">
+						<p class="product-text__text"></p>
+					</div>
+					<div class="product__stock"><span class="product__stock--number"></span><span
+							class="product__stock--left">left</span>
+					</div>
+				</div>
+
+
 
 			</form>
 		</div>

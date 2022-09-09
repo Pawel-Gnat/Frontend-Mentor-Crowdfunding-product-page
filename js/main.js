@@ -8,9 +8,57 @@ const bodyHtml = document.querySelector('body')
 const circle1 = document.querySelector('#circle1') // svg button element
 const circle2 = document.querySelector('#circle2') // svg button element
 const progressBar = document.querySelector('.backers__progress-bar--bar')
-const money = document.querySelector('.textarea__money--text1')
-const productStands = document.querySelectorAll('.product')
+const money = document.querySelector('.textarea__container:nth-child(1) > p:nth-child(1)')
+// const productStands = document.querySelectorAll('.product')
 const productStock = document.querySelectorAll('.number')
+const productsName = document.querySelectorAll('.product__top--heading')
+const productsPrice = document.querySelectorAll('.product__top--price-text')
+const productsInfo = document.querySelectorAll('.product__text')
+const productsStock = document.querySelectorAll('.number')
+
+const products = [
+	{
+		name: 'Bamboo Stand',
+		pledge: 'Pledge 25$ or more',
+		about:
+			"You get an ergonomic stand made of natural bamboo. You've helped us launch our promotional campaign, and you'll be added to a special Backer member list.",
+		stock: 101,
+	},
+	{
+		name: 'Black Edition Stand',
+		pledge: 'Pledge 75$ or more',
+		about:
+			"You get a Black Special Edition computer stand and a personal thank you. You'll be added to our Backer member list. Shipping is included.",
+		stock: 64,
+	},
+	{
+		name: 'Mahogany Special Edition',
+		pledge: 'Pledge 200$ or more',
+		about:
+			"You get two Special Edition Mahogany stands, a Backer T-Shirt, and a personal thank you. You'll be added to Our Backer member list. Shipping is included.",
+		stock: 0,
+	},
+]
+
+productsName.forEach((product, index) => {
+	const { name } = products[index]
+	product.textContent = name
+})
+
+productsPrice.forEach((price, index) => {
+	const { pledge } = products[index]
+	price.textContent = pledge
+})
+
+productsInfo.forEach((info, index) => {
+	const { about } = products[index]
+	info.textContent = about
+})
+
+productsStock.forEach((amount, index) => {
+	const { stock } = products[index]
+	amount.textContent = stock
+})
 
 function addBookmarkText(view) {
 	// dynamic add bookmark text if display width matches

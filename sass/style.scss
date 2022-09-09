@@ -255,9 +255,7 @@ section {
 	display: flex;
 	flex-direction: column;
 
-	&__money,
-	&__people,
-	&__days {
+	&__container {
 		position: relative;
 		padding-bottom: 1rem;
 		margin-top: 2rem;
@@ -273,8 +271,8 @@ section {
 		}
 	}
 
-	&__money::before,
-	&__people::before {
+	&__container:nth-of-type(1)::before,
+	&__container:nth-of-type(2)::before {
 		content: '';
 		position: absolute;
 		left: 50%;
@@ -407,24 +405,30 @@ footer {
 		display: none;
 	}
 
+	.general {
+		padding: 5rem 4.5rem 4rem;
+	}
+
+	.backers {
+		padding: 2rem 4.5rem 4rem;
+	}
+
 	.textarea {
 		flex-direction: row;
 		justify-content: space-between;
 
-		&__money,
-		&__people,
-		&__days {
+		&__container {
 			text-align: left;
 			width: 100%;
 		}
 
-		&__people,
-		&__days {
+		&__container:nth-of-type(2),
+		&__container:nth-of-type(3) {
 			margin-left: 5%;
 		}
 
-		&__money::before,
-		&__people::before {
+		&__container:nth-of-type(1)::before,
+		&__container:nth-of-type(2)::before {
 			left: 100%;
 			top: 5%;
 			height: 70%;
@@ -432,6 +436,10 @@ footer {
 			border-right: 1px solid rgba($dark_gray, 0.3);
 			transform: translate3d(0, 0, 0);
 		}
+	}
+
+	.about {
+		padding: 4rem 4.5rem;
 	}
 
 	.product {
@@ -463,4 +471,3 @@ footer {
 }
 
 // zrobic clamp na textach
-// te cyferki zeby pojawialy sie dynamicznie jak wchodze na stronie

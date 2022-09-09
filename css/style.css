@@ -322,18 +322,18 @@ section {
           flex-direction: column;
 }
 
-.textarea__money, .textarea__people, .textarea__days {
+.textarea__container {
   position: relative;
   padding-bottom: 1rem;
   margin-top: 2rem;
 }
 
-.textarea__money--text1, .textarea__people--text1, .textarea__days--text1 {
+.textarea__container--text1 {
   font-size: 3.2rem;
   font-weight: 700;
 }
 
-.textarea__money--text2, .textarea__people--text2, .textarea__days--text2 {
+.textarea__container--text2 {
   font-size: 1.4rem;
   font-weight: 500;
   line-height: 2.5rem;
@@ -341,7 +341,7 @@ section {
   margin: 1rem 0;
 }
 
-.textarea__money::before, .textarea__people::before {
+.textarea__container:nth-of-type(1)::before, .textarea__container:nth-of-type(2)::before {
   content: '';
   position: absolute;
   left: 50%;
@@ -509,6 +509,12 @@ footer {
   .mobile-btn {
     display: none;
   }
+  .general {
+    padding: 5rem 4.5rem 4rem;
+  }
+  .backers {
+    padding: 2rem 4.5rem 4rem;
+  }
   .textarea {
     -webkit-box-orient: horizontal;
     -webkit-box-direction: normal;
@@ -518,14 +524,14 @@ footer {
         -ms-flex-pack: justify;
             justify-content: space-between;
   }
-  .textarea__money, .textarea__people, .textarea__days {
+  .textarea__container {
     text-align: left;
     width: 100%;
   }
-  .textarea__people, .textarea__days {
+  .textarea__container:nth-of-type(2), .textarea__container:nth-of-type(3) {
     margin-left: 5%;
   }
-  .textarea__money::before, .textarea__people::before {
+  .textarea__container:nth-of-type(1)::before, .textarea__container:nth-of-type(2)::before {
     left: 100%;
     top: 5%;
     height: 70%;
@@ -533,6 +539,9 @@ footer {
     border-right: 1px solid rgba(122, 122, 122, 0.3);
     -webkit-transform: translate3d(0, 0, 0);
             transform: translate3d(0, 0, 0);
+  }
+  .about {
+    padding: 4rem 4.5rem;
   }
   .product__top {
     -webkit-box-orient: horizontal;
