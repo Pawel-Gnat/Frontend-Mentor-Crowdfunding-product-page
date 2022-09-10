@@ -390,7 +390,66 @@ footer {
 			height: 1.4rem;
 		}
 	}
+
+	&__text {
+		@include gray-text;
+	}
 }
+
+.product-dialog {
+	padding: 3.5rem 2.5rem;
+	margin: 2.5rem 0;
+	border: 1px solid rgba($dark_gray, 0.3);
+	border-radius: 1rem;
+}
+
+.product-info {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	gap: 1.5rem;
+	margin-bottom: 2rem;
+
+	&__input {
+		height: 2.5rem;
+		width: 2.5rem;
+	}
+
+	&__textarea {
+		&--label {
+			font-size: 1.4rem;
+			font-weight: 700;
+		}
+
+		&--pledge {
+			font-size: 1.4rem;
+			font-weight: 500;
+			margin-top: 1rem;
+			color: $moderate_cyan;
+		}
+	}
+}
+
+.product-text {
+	&__text {
+		@include gray-text;
+	}
+}
+
+.product-stock {
+		display: flex;
+		align-items: center;
+		gap: 1rem;
+		font-size: 1.8rem;
+		font-weight: 700;
+		margin-top: 2rem;
+
+		&__left {
+			font-size: 1.4rem;
+			font-weight: 400;
+			color: $dark_gray;
+		}
+	}
 
 /* MEDIA QUERIES */
 

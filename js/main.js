@@ -15,6 +15,18 @@ const productsName = document.querySelectorAll('.product__top--heading')
 const productsPrice = document.querySelectorAll('.product__top--price-text')
 const productsInfo = document.querySelectorAll('.product__text')
 const productsStock = document.querySelectorAll('.number')
+const dialogProductsName = document.querySelectorAll(
+	'.product-dialog:nth-child(n+2) > .product-info > .product-info__textarea > .product-info__textarea--label'
+)
+const dialogProductsPrice = document.querySelectorAll(
+	'.product-dialog:nth-child(n+2) > .product-info > .product-info__textarea > .product-info__textarea--pledge'
+)
+const dialogProductsInfo = document.querySelectorAll(
+	'.product-dialog:nth-child(n+2) > .product-text > .product-text__text'
+)
+const dialogProductsStock = document.querySelectorAll(
+	'.product-dialog:nth-child(n+2) > .product-stock > .product-stock__number'
+)
 
 const products = [
 	{
@@ -45,7 +57,17 @@ productsName.forEach((product, index) => {
 	product.textContent = name
 })
 
+dialogProductsName.forEach((product, index) => {
+	const { name } = products[index]
+	product.textContent = name
+})
+
 productsPrice.forEach((price, index) => {
+	const { pledge } = products[index]
+	price.textContent = pledge
+})
+
+dialogProductsPrice.forEach((price, index) => {
 	const { pledge } = products[index]
 	price.textContent = pledge
 })
@@ -55,7 +77,17 @@ productsInfo.forEach((info, index) => {
 	info.textContent = about
 })
 
+dialogProductsInfo.forEach((info, index) => {
+	const { about } = products[index]
+	info.textContent = about
+})
+
 productsStock.forEach((amount, index) => {
+	const { stock } = products[index]
+	amount.textContent = stock
+})
+
+dialogProductsStock.forEach((amount, index) => {
 	const { stock } = products[index]
 	amount.textContent = stock
 })
@@ -107,6 +139,14 @@ function handleProductStock() {
 			product.parentElement.nextElementSibling.style.backgroundColor = 'rgb(122, 122, 122)'
 			product.parentElement.nextElementSibling.textContent = 'Out of stock'
 			product.parentElement.nextElementSibling.disabled = true
+			product.parentElement.nextElementSibling.style.cursor = 'default'
+		}
+	})
+
+	dialogProductsStock.forEach(product => {
+		if (parseInt(product.textContent) === 0) {
+			product.closest('.product-dialog').style.opacity = 0.4
+			product.parentElement.parentElement.firstElementChild.firstElementChild.disabled = true
 		}
 	})
 }
