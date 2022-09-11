@@ -1,3 +1,5 @@
+const backButton = document.querySelector('.btn1')
+const selectRewardButton = document.querySelectorAll('.product__bottom--btn')
 const bookmarkBtn = document.querySelector('.btn2')
 const bookmarkText = document.querySelector('.btn2__text')
 const mediaQuery = window.matchMedia('(min-width: 576px)')
@@ -9,7 +11,8 @@ const circle1 = document.querySelector('#circle1') // svg button element
 const circle2 = document.querySelector('#circle2') // svg button element
 const progressBar = document.querySelector('.backers__progress-bar--bar')
 const money = document.querySelector('.textarea__container:nth-child(1) > p:nth-child(1)')
-// const productStands = document.querySelectorAll('.product')
+const mainDialog = document.querySelector('#dialog')
+const closeMainDialog = document.querySelector('.back-dialog__heading--close-icon')
 const productStock = document.querySelectorAll('.number')
 const productsName = document.querySelectorAll('.product__top--heading')
 const productsPrice = document.querySelectorAll('.product__top--price-text')
@@ -27,6 +30,8 @@ const dialogProductsInfo = document.querySelectorAll(
 const dialogProductsStock = document.querySelectorAll(
 	'.product-dialog:nth-child(n+2) > .product-stock > .product-stock__number'
 )
+
+const backButtons = [backButton, ...selectRewardButton]
 
 const products = [
 	{
@@ -151,6 +156,10 @@ function handleProductStock() {
 	})
 }
 
+function mainDialogClose() {
+	mainDialog.close()
+}
+
 mobileLinks.forEach(link => {
 	// close my mobile menu view while selecting one of website links
 	link.addEventListener('click', () => {
@@ -168,8 +177,23 @@ hamburgerBtn.addEventListener('click', e => {
 	handleHamburgerIcon()
 })
 
+backButtons.forEach(button => {
+	button.addEventListener('click', () => {
+		mainDialog.show()
+	})
+})
+
 bookmarkBtn.addEventListener('click', handleBookmarkBtn)
+closeMainDialog.addEventListener('click', mainDialogClose)
 mediaQuery.addListener(addBookmarkText)
 addBookmarkText(mediaQuery)
 calculateProgressBar()
 handleProductStock()
+
+// hover na produkt nazwe (cyanowy)
+// total backers +1 i money sie zwieksza po submicie
+// focus state na produkt
+// dialog 2
+// dialog 1 dokonczyc na clicka
+
+// dialog ma robic tlo i blokowac je
