@@ -26,8 +26,20 @@ body {
 	background-color: rgb(250, 250, 250);
 }
 
-button {
+button,
+input {
 	font-family: 'Commissioner', sans-serif;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
+}
+
+input[type='number'] {
+	appearance: none;
+	-moz-appearance: textfield;
 }
 
 /* NAV */
@@ -369,24 +381,14 @@ footer {
 /* DIALOGS */
 
 .back-dialog {
-	position: absolute;
-	inset: 0;
 	top: 12rem;
-
-	// position: fixed;
-	// height: 100%;
-	// width: 100%;
-	// top: 50%;
-	// left: 50%;
-	// transform: translate(-50%, -50%);
-
+	height: 80%;
 	max-width: 73rem;
 	padding: 3.5rem 2.5rem;
 	margin: 0 2.5rem;
 	border-radius: 1rem;
 	border: 1px solid rgba($dark_gray, 0.3);
 	background-color: #fff;
-	z-index: 5;
 
 	&__heading {
 		display: flex;
@@ -413,20 +415,11 @@ footer {
 }
 
 .back-dialog::backdrop {
-	// position: fixed;
-	// top: 0px;
-	// right: 0px;
-	// bottom: 0px;
-	// left: 0px;
-	// background: rgba(0, 0, 0, 0.1);
-	// opacity: 0.5;
-
-	background-color: darkorange;
-	background-image: linear-gradient(130deg, #ff7a18, #af002d 41.07%, #319197 76.05%);
+	background: rgba(0, 0, 0, 0.5);
 }
 
 .product-dialog {
-	padding: 3.5rem 2.5rem;
+	padding: 3.5rem 0rem;
 	margin: 2.5rem 0;
 	border: 1px solid rgba($dark_gray, 0.3);
 	border-radius: 1rem;
@@ -438,6 +431,7 @@ footer {
 	align-items: center;
 	gap: 1.5rem;
 	margin-bottom: 2rem;
+	padding: 0 2.5rem;
 
 	&__input {
 		height: 2.5rem;
@@ -448,6 +442,12 @@ footer {
 		&--label {
 			font-size: 1.4rem;
 			font-weight: 700;
+			cursor: pointer;
+			transition: color 0.2s;
+		}
+
+		&--label:hover {
+			color: $moderate_cyan;
 		}
 
 		&--pledge {
@@ -460,6 +460,8 @@ footer {
 }
 
 .product-text {
+	padding: 0 2.5rem;
+
 	&__text {
 		@include gray-text;
 	}
@@ -472,11 +474,71 @@ footer {
 	font-size: 1.8rem;
 	font-weight: 700;
 	margin-top: 2rem;
+	padding: 0 2.5rem;
 
 	&__left {
 		font-size: 1.4rem;
 		font-weight: 400;
 		color: $dark_gray;
+	}
+}
+
+.product-pledge {
+	display: none;
+	padding: 0 2.5rem;
+	margin-top: 2.5rem;
+	border-top: 1px solid rgba($dark_gray, 0.3);
+
+	&__text {
+		@include gray-text;
+		display: block;
+		margin: 3rem 0 2rem;
+		text-align: center;
+	}
+}
+
+.pledge-container {
+	display: flex;
+	flex-direction: row;
+	gap: 2rem;
+	justify-content: space-between;
+
+	&__input-area {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		width: 40%;
+		height: 5.5rem;
+		padding: 1.5rem 2.5rem;
+		border: 1px solid rgba($dark_gray, 0.3);
+		border-radius: 100vw;
+		text-align: center;
+
+		&--dollar-sign {
+			@include gray-text;
+		}
+
+		&--input {
+			font-size: 1.4rem;
+			font-weight: 700;
+			width: 70%;
+			margin-left: 1rem;
+			border: none;
+			background-color: inherit;
+		}
+
+		&--input:focus {
+			outline: 2px solid $moderate_cyan;
+		}
+	}
+
+	&__submit {
+		@include btn;
+		width: 60%;
+	}
+
+	&__submit:hover {
+		background-color: $dark_cyan;
 	}
 }
 
@@ -548,6 +610,12 @@ footer {
 				margin-bottom: 0rem;
 			}
 		}
+	}
+}
+
+@media (min-width: 770px) {
+	.back-dialog {
+		margin: 0 auto;
 	}
 }
 

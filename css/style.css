@@ -45,8 +45,21 @@ body {
   background-color: #fafafa;
 }
 
-button {
+button,
+input {
   font-family: 'Commissioner', sans-serif;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type='number'] {
+  -webkit-appearance: none;
+          appearance: none;
+  -moz-appearance: textfield;
 }
 
 /* NAV */
@@ -469,16 +482,14 @@ footer {
 
 /* DIALOGS */
 .back-dialog {
-  position: absolute;
-  inset: 0;
   top: 12rem;
+  height: 80%;
   max-width: 73rem;
   padding: 3.5rem 2.5rem;
   margin: 0 2.5rem;
   border-radius: 1rem;
   border: 1px solid rgba(122, 122, 122, 0.3);
   background-color: #fff;
-  z-index: 5;
 }
 
 .back-dialog__heading {
@@ -517,17 +528,15 @@ footer {
 }
 
 .back-dialog::-webkit-backdrop {
-  background-color: darkorange;
-  background-image: linear-gradient(130deg, #ff7a18, #af002d 41.07%, #319197 76.05%);
+  background: rgba(0, 0, 0, 0.5);
 }
 
 .back-dialog::backdrop {
-  background-color: darkorange;
-  background-image: linear-gradient(130deg, #ff7a18, #af002d 41.07%, #319197 76.05%);
+  background: rgba(0, 0, 0, 0.5);
 }
 
 .product-dialog {
-  padding: 3.5rem 2.5rem;
+  padding: 3.5rem 0rem;
   margin: 2.5rem 0;
   border: 1px solid rgba(122, 122, 122, 0.3);
   border-radius: 1rem;
@@ -546,6 +555,7 @@ footer {
           align-items: center;
   gap: 1.5rem;
   margin-bottom: 2rem;
+  padding: 0 2.5rem;
 }
 
 .product-info__input {
@@ -556,6 +566,13 @@ footer {
 .product-info__textarea--label {
   font-size: 1.4rem;
   font-weight: 700;
+  cursor: pointer;
+  -webkit-transition: color 0.2s;
+  transition: color 0.2s;
+}
+
+.product-info__textarea--label:hover {
+  color: #3cb4ac;
 }
 
 .product-info__textarea--pledge {
@@ -563,6 +580,10 @@ footer {
   font-weight: 500;
   margin-top: 1rem;
   color: #3cb4ac;
+}
+
+.product-text {
+  padding: 0 2.5rem;
 }
 
 .product-text__text {
@@ -583,12 +604,99 @@ footer {
   font-size: 1.8rem;
   font-weight: 700;
   margin-top: 2rem;
+  padding: 0 2.5rem;
 }
 
 .product-stock__left {
   font-size: 1.4rem;
   font-weight: 400;
   color: #7a7a7a;
+}
+
+.product-pledge {
+  display: none;
+  padding: 0 2.5rem;
+  margin-top: 2.5rem;
+  border-top: 1px solid rgba(122, 122, 122, 0.3);
+}
+
+.product-pledge__text {
+  font-size: 1.4rem;
+  font-weight: 500;
+  line-height: 2.5rem;
+  color: #7a7a7a;
+  display: block;
+  margin: 3rem 0 2rem;
+  text-align: center;
+}
+
+.pledge-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  gap: 2rem;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.pledge-container__input-area {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 40%;
+  height: 5.5rem;
+  padding: 1.5rem 2.5rem;
+  border: 1px solid rgba(122, 122, 122, 0.3);
+  border-radius: 100vw;
+  text-align: center;
+}
+
+.pledge-container__input-area--dollar-sign {
+  font-size: 1.4rem;
+  font-weight: 500;
+  line-height: 2.5rem;
+  color: #7a7a7a;
+}
+
+.pledge-container__input-area--input {
+  font-size: 1.4rem;
+  font-weight: 700;
+  width: 70%;
+  margin-left: 1rem;
+  border: none;
+  background-color: inherit;
+}
+
+.pledge-container__input-area--input:focus {
+  outline: 2px solid #3cb4ac;
+}
+
+.pledge-container__submit {
+  font-weight: 500;
+  border-radius: 100vw;
+  border: none;
+  color: #fff;
+  background-color: #3cb4ac;
+  cursor: pointer;
+  -webkit-transition: background-color 0.3s;
+  transition: background-color 0.3s;
+  width: 60%;
+}
+
+.pledge-container__submit:hover {
+  background-color: #147b74;
 }
 
 /* MEDIA QUERIES */
@@ -656,6 +764,12 @@ footer {
   }
   .product__bottom--amount {
     margin-bottom: 0rem;
+  }
+}
+
+@media (min-width: 770px) {
+  .back-dialog {
+    margin: 0 auto;
   }
 }
 

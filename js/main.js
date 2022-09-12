@@ -158,6 +158,7 @@ function handleProductStock() {
 
 function mainDialogClose() {
 	mainDialog.close()
+	bodyHtml.classList.remove('overflow')
 }
 
 mobileLinks.forEach(link => {
@@ -179,7 +180,8 @@ hamburgerBtn.addEventListener('click', e => {
 
 backButtons.forEach(button => {
 	button.addEventListener('click', () => {
-		mainDialog.show()
+		mainDialog.showModal()
+		bodyHtml.classList.add('overflow')
 	})
 })
 
@@ -190,10 +192,7 @@ addBookmarkText(mediaQuery)
 calculateProgressBar()
 handleProductStock()
 
-// hover na produkt nazwe (cyanowy)
 // total backers +1 i money sie zwieksza po submicie
 // focus state na produkt
 // dialog 2
 // dialog 1 dokonczyc na clicka
-
-// dialog ma robic tlo i blokowac je
