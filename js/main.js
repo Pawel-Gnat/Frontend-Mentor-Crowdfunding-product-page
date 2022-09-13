@@ -11,13 +11,16 @@ const circle1 = document.querySelector('#circle1') // svg button element
 const circle2 = document.querySelector('#circle2') // svg button element
 const progressBar = document.querySelector('.backers__progress-bar--bar')
 const money = document.querySelector('.textarea__container:nth-child(1) > p:nth-child(1)')
+const totalBackers = document.querySelector('.textarea__container:nth-child(2) > p:nth-child(1)')
 const mainDialog = document.querySelector('#dialog')
 const closeMainDialog = document.querySelector('.back-dialog__heading--close-icon')
+const radioInputDialog = document.querySelectorAll('.product-info__input')
 const productStock = document.querySelectorAll('.number')
 const productsName = document.querySelectorAll('.product__top--heading')
 const productsPrice = document.querySelectorAll('.product__top--price-text')
 const productsInfo = document.querySelectorAll('.product__text')
 const productsStock = document.querySelectorAll('.number')
+const dialogContinueButtons = document.querySelectorAll('.pledge-container__submit')
 const dialogProductsName = document.querySelectorAll(
 	'.product-dialog:nth-child(n+2) > .product-info > .product-info__textarea > .product-info__textarea--label'
 )
@@ -161,6 +164,28 @@ function mainDialogClose() {
 	bodyHtml.classList.remove('overflow')
 }
 
+function removeRadioInputFocusState() {
+	document.querySelectorAll('.product-dialog').classList.remove('border-color')
+}
+
+radioInputDialog.forEach(input => {
+	//function displays additional pledge container with a submit input
+	input.addEventListener('click', () => {
+		document.querySelectorAll('.product-dialog').forEach(product => {
+			product.classList.remove('border-color')
+		})
+
+		document.querySelectorAll('.product-pledge').forEach(container => {
+			container.classList.remove('active')
+		})
+
+		if (input.checked) {
+			input.closest('.product-dialog').classList.add('border-color')
+			input.parentElement.parentElement.lastElementChild.classList.add('active')
+		}
+	})
+})
+
 mobileLinks.forEach(link => {
 	// close my mobile menu view while selecting one of website links
 	link.addEventListener('click', () => {
@@ -185,6 +210,13 @@ backButtons.forEach(button => {
 	})
 })
 
+dialogContinueButtons.forEach(button => {
+	button.addEventListener('click', () => {
+		bodyHtml.classList.remove('overflow')
+
+	})
+})
+
 bookmarkBtn.addEventListener('click', handleBookmarkBtn)
 closeMainDialog.addEventListener('click', mainDialogClose)
 mediaQuery.addListener(addBookmarkText)
@@ -192,7 +224,8 @@ addBookmarkText(mediaQuery)
 calculateProgressBar()
 handleProductStock()
 
-// total backers +1 i money sie zwieksza po submicie
-// focus state na produkt
-// dialog 2
 // dialog 1 dokonczyc na clicka
+// total backers +1 i money sie zwieksza po submicie
+// dodanie error state przy input value <25 itp
+// dialog 2
+// zrobic clamp na textach
