@@ -323,6 +323,7 @@ section {
 .backers__progress-bar--bar {
   display: block;
   height: 100%;
+  max-width: 100%;
   border-radius: 100vw;
   background-color: #3cb4ac;
 }

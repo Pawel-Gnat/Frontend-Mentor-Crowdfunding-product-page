@@ -106,9 +106,9 @@ dialogProductsStock.forEach((amount, index) => {
 function displayCollectedMoney(money) {
 	let stringMoney = money.toString()
 	let lastThreeLetters = stringMoney.length - 3
+	let correctedValue = '$' + stringMoney.slice(0, lastThreeLetters) + ',' + stringMoney.slice(lastThreeLetters)
 
-	return (totalMoney.textContent =
-		'$' + stringMoney.slice(0, lastThreeLetters) + ',' + stringMoney.slice(lastThreeLetters))
+	return (totalMoney.textContent = correctedValue)
 }
 
 function displayTotalBackers(backers) {
@@ -150,7 +150,7 @@ function handleHamburgerIcon() {
 	}
 }
 
-function calculateProgressBar() {
+function calculateProgressBar(money) {
 	// set width of progress bar
 	const totalValueNeeded = 100000
 	let progressWidth = (money * 100) / totalValueNeeded
@@ -233,11 +233,11 @@ dialogContinueButtons.forEach(button => {
 		let declaredPrice = button.previousElementSibling.lastElementChild.value
 		bodyHtml.classList.remove('overflow')
 		money += +declaredPrice
-		// return money
+		backers += 1
+		displayCollectedMoney(money)
+		calculateProgressBar(money)
+		displayTotalBackers(backers)
 	})
-	console.log(money)
-	return money
-	// return displayCollectedMoney(money)
 })
 
 bookmarkBtn.addEventListener('click', handleBookmarkBtn)
@@ -246,11 +246,10 @@ displayCollectedMoney(money)
 displayTotalBackers(backers)
 mediaQuery.addListener(addBookmarkText)
 addBookmarkText(mediaQuery)
-calculateProgressBar()
+calculateProgressBar(money)
 handleProductStock()
 
-// dialog 1 dokonczyc na clicka
-// total backers +1 i money sie zwieksza po submicie
+// dialog 1 wprowadzic odejmowanie stock product
 // dodanie error state przy input value <25 itp
 // dialog 2
 // zrobic clamp na textach
