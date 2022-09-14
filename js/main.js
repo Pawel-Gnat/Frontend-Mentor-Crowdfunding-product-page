@@ -10,7 +10,7 @@ const bodyHtml = document.querySelector('body')
 const circle1 = document.querySelector('#circle1') // svg button element
 const circle2 = document.querySelector('#circle2') // svg button element
 const progressBar = document.querySelector('.backers__progress-bar--bar')
-const money = document.querySelector('.textarea__container:nth-child(1) > p:nth-child(1)')
+const totalMoney = document.querySelector('.textarea__container:nth-child(1) > p:nth-child(1)')
 const totalBackers = document.querySelector('.textarea__container:nth-child(2) > p:nth-child(1)')
 const mainDialog = document.querySelector('#dialog')
 const closeMainDialog = document.querySelector('.back-dialog__heading--close-icon')
@@ -35,6 +35,9 @@ const dialogProductsStock = document.querySelectorAll(
 )
 
 const backButtons = [backButton, ...selectRewardButton]
+
+let money = 89914
+let backers = 5007
 
 const products = [
 	{
@@ -100,6 +103,22 @@ dialogProductsStock.forEach((amount, index) => {
 	amount.textContent = stock
 })
 
+function displayCollectedMoney(money) {
+	let stringMoney = money.toString()
+	let lastThreeLetters = stringMoney.length - 3
+
+	return (totalMoney.textContent =
+		'$' + stringMoney.slice(0, lastThreeLetters) + ',' + stringMoney.slice(lastThreeLetters))
+}
+
+function displayTotalBackers(backers) {
+	let stringBackers = backers.toString()
+	let lastThreeLetters = stringBackers.length - 3
+
+	return (totalBackers.textContent =
+		stringBackers.slice(0, lastThreeLetters) + ',' + stringBackers.slice(lastThreeLetters))
+}
+
 function addBookmarkText(view) {
 	// dynamic add bookmark text if display width matches
 	if (view.matches) {
@@ -134,8 +153,7 @@ function handleHamburgerIcon() {
 function calculateProgressBar() {
 	// set width of progress bar
 	const totalValueNeeded = 100000
-	const moneyValue = money.textContent.match(/\d/g).join('')
-	let progressWidth = (moneyValue * 100) / totalValueNeeded
+	let progressWidth = (money * 100) / totalValueNeeded
 	progressBar.style.width = progressWidth + '%'
 }
 
@@ -212,13 +230,20 @@ backButtons.forEach(button => {
 
 dialogContinueButtons.forEach(button => {
 	button.addEventListener('click', () => {
+		let declaredPrice = button.previousElementSibling.lastElementChild.value
 		bodyHtml.classList.remove('overflow')
-
+		money += +declaredPrice
+		// return money
 	})
+	console.log(money)
+	return money
+	// return displayCollectedMoney(money)
 })
 
 bookmarkBtn.addEventListener('click', handleBookmarkBtn)
 closeMainDialog.addEventListener('click', mainDialogClose)
+displayCollectedMoney(money)
+displayTotalBackers(backers)
 mediaQuery.addListener(addBookmarkText)
 addBookmarkText(mediaQuery)
 calculateProgressBar()
