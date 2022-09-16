@@ -15,6 +15,7 @@ const totalBackers = document.querySelector('.textarea__container:nth-child(2) >
 const mainDialog = document.querySelector('#dialog')
 const closeMainDialog = document.querySelector('.back-dialog__heading--close-icon')
 const radioInputDialog = document.querySelectorAll('.product-info__input')
+// const pledgeInputs = document.querySelectorAll('.pledge-container__input-area--input')
 const productStock = document.querySelectorAll('.number')
 const productsName = document.querySelectorAll('.product__top--heading')
 const productsPrice = document.querySelectorAll('.product__top--price-text')
@@ -41,6 +42,7 @@ let backers = 5007
 
 const products = [
 	{
+		id: 1,
 		name: 'Bamboo Stand',
 		pledge: 'Pledge 25$ or more',
 		about:
@@ -48,6 +50,7 @@ const products = [
 		stock: 101,
 	},
 	{
+		id: 2,
 		name: 'Black Edition Stand',
 		pledge: 'Pledge 75$ or more',
 		about:
@@ -55,11 +58,12 @@ const products = [
 		stock: 64,
 	},
 	{
+		id: 3,
 		name: 'Mahogany Special Edition',
 		pledge: 'Pledge 200$ or more',
 		about:
 			"You get two Special Edition Mahogany stands, a Backer T-Shirt, and a personal thank you. You'll be added to Our Backer member list. Shipping is included.",
-		stock: 0,
+		stock: 1,
 	},
 ]
 
@@ -102,6 +106,11 @@ dialogProductsStock.forEach((amount, index) => {
 	const { stock } = products[index]
 	amount.textContent = stock
 })
+
+// function displayProductStock(amount) {
+
+// }
+
 
 function displayCollectedMoney(money) {
 	let stringMoney = money.toString()
@@ -178,11 +187,13 @@ function handleProductStock() {
 }
 
 function mainDialogClose() {
+	// close main dialog
 	mainDialog.close()
 	bodyHtml.classList.remove('overflow')
 }
 
 function removeRadioInputFocusState() {
+	// remove border color from product div
 	document.querySelectorAll('.product-dialog').classList.remove('border-color')
 }
 
@@ -215,6 +226,20 @@ mobileLinks.forEach(link => {
 	})
 })
 
+// function subtractProductStock() {
+// for (let i = 0; i < pledgeInputs.length; i++) {
+// console.log(pledgeInputs[0])
+// console.log(products[i].id)
+// console.log(pledgeInputs[i + 1].dataset.id)
+// if (pledgeInputs[i + 1].dataset.id === products[i].id) {
+// 	products[i].stock -= 1
+// }
+// }
+// console.log(pledgeInputs[0])
+// pledgeInputs[0]
+// }
+// subtractProductStock()
+
 hamburgerBtn.addEventListener('click', e => {
 	// listener opening my hamburger menu links
 	mobileLinksContainer.classList.toggle('opened')
@@ -237,6 +262,19 @@ dialogContinueButtons.forEach(button => {
 		displayCollectedMoney(money)
 		calculateProgressBar(money)
 		displayTotalBackers(backers)
+
+		// console.log(button.dataset.id)
+
+		for (let i = 0; i < products.length; i++) {
+			if (button.dataset.id == products[i].id) {
+				products[i].stock -= 1
+				console.log(products[i].stock);
+				// return products[i].stock;
+			}
+			// return products[i].stock;
+		}
+
+		// products.find((product) => product.id === button.dataset.id) 
 	})
 })
 
@@ -250,6 +288,9 @@ calculateProgressBar(money)
 handleProductStock()
 
 // dialog 1 wprowadzic odejmowanie stock product
-// dodanie error state przy input value <25 itp
 // dialog 2
 // zrobic clamp na textach
+
+// const test = document.querySelector('#pledge-mahogany')
+// console.log(test.getAttribute('data-id'))
+// console.log(test.dataset.id)
