@@ -12,10 +12,11 @@ const circle2 = document.querySelector('#circle2') // svg button element
 const progressBar = document.querySelector('.backers__progress-bar--bar')
 const totalMoney = document.querySelector('.textarea__container:nth-child(1) > p:nth-child(1)')
 const totalBackers = document.querySelector('.textarea__container:nth-child(2) > p:nth-child(1)')
-const mainDialog = document.querySelector('#dialog')
+const mainDialog = document.querySelector('#back-dialog')
 const closeMainDialog = document.querySelector('.back-dialog__heading--close-icon')
+const resultDialog = document.querySelector('#result-dialog')
+const closeResultDialog = document.querySelector('.result-dialog__btn')
 const radioInputDialog = document.querySelectorAll('.product-info__input')
-// const pledgeInputs = document.querySelectorAll('.pledge-container__input-area--input')
 const productStock = document.querySelectorAll('.number')
 const productsName = document.querySelectorAll('.product__top--heading')
 const productsPrice = document.querySelectorAll('.product__top--price-text')
@@ -107,11 +108,6 @@ dialogProductsStock.forEach((amount, index) => {
 	amount.textContent = stock
 })
 
-// function displayProductStock(amount) {
-
-// }
-
-
 function displayCollectedMoney(money) {
 	let stringMoney = money.toString()
 	let lastThreeLetters = stringMoney.length - 3
@@ -182,6 +178,7 @@ function handleProductStock() {
 		if (parseInt(product.textContent) === 0) {
 			product.closest('.product-dialog').style.opacity = 0.4
 			product.parentElement.parentElement.firstElementChild.firstElementChild.disabled = true
+			product.parentElement.nextElementSibling.lastElementChild.lastElementChild.disabled = true
 		}
 	})
 }
@@ -189,6 +186,18 @@ function handleProductStock() {
 function mainDialogClose() {
 	// close main dialog
 	mainDialog.close()
+	bodyHtml.classList.remove('overflow')
+}
+
+function resultDialogOpen() {
+	// open result dialog
+	resultDialog.showModal()
+	bodyHtml.classList.add('overflow')
+}
+
+function resultDialogClose() {
+	// close result dialog
+	resultDialog.close()
 	bodyHtml.classList.remove('overflow')
 }
 
@@ -226,20 +235,6 @@ mobileLinks.forEach(link => {
 	})
 })
 
-// function subtractProductStock() {
-// for (let i = 0; i < pledgeInputs.length; i++) {
-// console.log(pledgeInputs[0])
-// console.log(products[i].id)
-// console.log(pledgeInputs[i + 1].dataset.id)
-// if (pledgeInputs[i + 1].dataset.id === products[i].id) {
-// 	products[i].stock -= 1
-// }
-// }
-// console.log(pledgeInputs[0])
-// pledgeInputs[0]
-// }
-// subtractProductStock()
-
 hamburgerBtn.addEventListener('click', e => {
 	// listener opening my hamburger menu links
 	mobileLinksContainer.classList.toggle('opened')
@@ -263,34 +258,31 @@ dialogContinueButtons.forEach(button => {
 		calculateProgressBar(money)
 		displayTotalBackers(backers)
 
-		// console.log(button.dataset.id)
-
 		for (let i = 0; i < products.length; i++) {
 			if (button.dataset.id == products[i].id) {
 				products[i].stock -= 1
-				console.log(products[i].stock);
-				// return products[i].stock;
+				productStock[i].textContent = products[i].stock
+				dialogProductsStock[i].textContent = products[i].stock
+				handleProductStock()
 			}
-			// return products[i].stock;
 		}
 
-		// products.find((product) => product.id === button.dataset.id) 
+		mainDialogClose()
+
+		setTimeout(() => {
+			resultDialogOpen()
+		}, 1000)
 	})
 })
 
 bookmarkBtn.addEventListener('click', handleBookmarkBtn)
 closeMainDialog.addEventListener('click', mainDialogClose)
+closeResultDialog.addEventListener('click', resultDialogClose)
 displayCollectedMoney(money)
 displayTotalBackers(backers)
 mediaQuery.addListener(addBookmarkText)
 addBookmarkText(mediaQuery)
 calculateProgressBar(money)
-handleProductStock()
 
-// dialog 1 wprowadzic odejmowanie stock product
-// dialog 2
+// dodac ifa z min value na inpucie, bo moge klikac non stop i pobiera mi produkt (zakomentuj set timeouta)
 // zrobic clamp na textach
-
-// const test = document.querySelector('#pledge-mahogany')
-// console.log(test.getAttribute('data-id'))
-// console.log(test.dataset.id)

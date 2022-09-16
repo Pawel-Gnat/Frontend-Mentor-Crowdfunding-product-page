@@ -115,8 +115,6 @@ nav::before {
 	-webkit-box-shadow: 0px 0px 100rem 100rem rgba(0, 0, 0, 0.3);
 	-moz-box-shadow: 0px 0px 100rem 100rem rgba(0, 0, 0, 0.3);
 	box-shadow: 0px 0px 100rem 100rem rgba(0, 0, 0, 0.3);
-	// opacity: 0;
-	// transition: opacity 0.3s;
 	z-index: 1;
 	animation: 0.5s forwards moveIn;
 
@@ -381,7 +379,7 @@ footer {
 	text-align: center;
 }
 
-/* DIALOGS */
+/* BACK-DIALOG */
 
 .back-dialog {
 	top: 12rem;
@@ -417,7 +415,8 @@ footer {
 	}
 }
 
-.back-dialog::backdrop {
+.back-dialog::backdrop,
+.result-dialog::backdrop {
 	background: rgba(0, 0, 0, 0.5);
 }
 
@@ -564,6 +563,41 @@ footer {
 
 .border-color {
 	border: 2px solid $moderate_cyan;
+}
+
+/* RESULT DIALOG */
+
+.result-dialog {
+	top: 50%;
+	transform: translate3d(0, -50%, 0);
+	max-width: 54rem;
+	padding: 3rem 2.5rem 4rem;
+	margin: 0 2.5rem;
+	border-radius: 1rem;
+	border: 1px solid rgba($dark_gray, 0.3);
+	background-color: #fff;
+	text-align: center;
+
+	&__heading {
+		font-size: 1.8rem;
+		margin: 3rem 0;
+	}
+
+	&__text {
+		@include gray-text;
+	}
+
+	&__btn {
+		@include btn;
+		font-size: 1.4rem;
+		height: 5rem;
+		padding: 0rem 3.5rem;
+		margin-top: 3.5rem;
+	}
+
+	&__btn:hover {
+		background-color: $dark_cyan;
+	}
 }
 
 /* MEDIA QUERIES */
@@ -715,6 +749,12 @@ footer {
 				width: 100%;
 			}
 		}
+	}
+}
+
+@media (min-width: 590px) {
+	.result-dialog {
+		margin: 0 auto;
 	}
 }
 
