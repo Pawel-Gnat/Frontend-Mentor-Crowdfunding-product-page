@@ -1,20 +1,20 @@
-const backButton = document.querySelector('.btn1')
-const selectRewardButton = document.querySelectorAll('.product__bottom--btn')
-const bookmarkBtn = document.querySelector('.btn2')
-const bookmarkText = document.querySelector('.btn2__text')
-const mediaQuery = window.matchMedia('(min-width: 576px)')
+const backButton = document.querySelector('.btn1') // "back this project" button
+const selectRewardButton = document.querySelectorAll('.product__bottom--btn') // "select reward" button
+const bookmarkBtn = document.querySelector('.btn2') // black bookmark button
+const bookmarkText = document.querySelector('.btn2__text') // bookmark text (visible when viewport is wider than 576px)
+const mediaQuery = window.matchMedia('(min-width: 576px)') // viewport > 576 px
 const hamburgerBtn = document.querySelector('.mobile-btn')
 const mobileLinksContainer = document.querySelector('.mobile-linkbox')
 const mobileLinks = document.querySelectorAll('.mobile-linkbox a')
-const bodyHtml = document.querySelector('body')
-const circle1 = document.querySelector('#circle1') // svg button element
-const circle2 = document.querySelector('#circle2') // svg button element
-const progressBar = document.querySelector('.backers__progress-bar--bar')
-const totalMoney = document.querySelector('.textarea__container:nth-child(1) > p:nth-child(1)')
-const totalBackers = document.querySelector('.textarea__container:nth-child(2) > p:nth-child(1)')
-const mainDialog = document.querySelector('#back-dialog')
+const bodyHtml = document.querySelector('body') // html body tag
+const circle1 = document.querySelector('#circle1') // svg bookmark button element
+const circle2 = document.querySelector('#circle2') // svg bookmark button element
+const progressBar = document.querySelector('.backers__progress-bar--bar') //money collect progress bar
+const totalMoney = document.querySelector('.textarea__container:nth-child(1) > p:nth-child(1)') // all money collected text
+const totalBackers = document.querySelector('.textarea__container:nth-child(2) > p:nth-child(1)') // total number of backers
+const mainDialog = document.querySelector('#back-dialog') // primary dialog, visible after "select reward" button
 const closeMainDialog = document.querySelector('.back-dialog__heading--close-icon')
-const resultDialog = document.querySelector('#result-dialog')
+const resultDialog = document.querySelector('#result-dialog') // seconardy dialog
 const closeResultDialog = document.querySelector('.result-dialog__btn')
 const radioInputDialog = document.querySelectorAll('.product-info__input')
 const productStock = document.querySelectorAll('.number')
@@ -117,6 +117,7 @@ function displayCollectedMoney(money) {
 }
 
 function displayTotalBackers(backers) {
+	// displaying all backers
 	let stringBackers = backers.toString()
 	let lastThreeLetters = stringBackers.length - 3
 
@@ -140,6 +141,12 @@ function handleBookmarkBtn() {
 	circle1.classList.toggle('btn2-img-bookmarked1')
 	circle2.classList.toggle('btn2-img-bookmarked2')
 	bookmarkText.classList.toggle('btn2-txt-bookmarked')
+
+	if (bookmarkText.textContent != 'Bookmarked') {
+		bookmarkText.textContent = 'Bookmarked'
+	} else if ((bookmarkText.textContent = 'Bookmarked')) {
+		bookmarkText.textContent = 'Bookmark'
+	}
 }
 
 function handleHamburgerIcon() {
@@ -242,6 +249,7 @@ hamburgerBtn.addEventListener('click', e => {
 })
 
 backButtons.forEach(button => {
+	// function showing primary modal
 	button.addEventListener('click', () => {
 		mainDialog.showModal()
 		bodyHtml.classList.add('overflow')
@@ -249,29 +257,35 @@ backButtons.forEach(button => {
 })
 
 dialogContinueButtons.forEach(button => {
+	// continue button inside my main dialog
 	button.addEventListener('click', () => {
-		let declaredPrice = button.previousElementSibling.lastElementChild.value
-		bodyHtml.classList.remove('overflow')
-		money += +declaredPrice
-		backers += 1
-		displayCollectedMoney(money)
-		calculateProgressBar(money)
-		displayTotalBackers(backers)
+		const inputValue = button.previousElementSibling.lastElementChild
+		const minInputValue = +inputValue.min
+		let declaredPrice = +inputValue.value
 
-		for (let i = 0; i < products.length; i++) {
-			if (button.dataset.id == products[i].id) {
-				products[i].stock -= 1
-				productStock[i].textContent = products[i].stock
-				dialogProductsStock[i].textContent = products[i].stock
-				handleProductStock()
+		if (declaredPrice >= minInputValue) {
+			bodyHtml.classList.remove('overflow')
+			money += +declaredPrice
+			backers += 1
+			displayCollectedMoney(money)
+			calculateProgressBar(money)
+			displayTotalBackers(backers)
+
+			for (let i = 0; i < products.length; i++) {
+				if (button.dataset.id == products[i].id) {
+					products[i].stock -= 1
+					productStock[i].textContent = products[i].stock
+					dialogProductsStock[i].textContent = products[i].stock
+					handleProductStock()
+				}
 			}
+
+			mainDialogClose()
+
+			setTimeout(() => {
+				resultDialogOpen()
+			}, 1000)
 		}
-
-		mainDialogClose()
-
-		setTimeout(() => {
-			resultDialogOpen()
-		}, 1000)
 	})
 })
 
@@ -283,6 +297,3 @@ displayTotalBackers(backers)
 mediaQuery.addListener(addBookmarkText)
 addBookmarkText(mediaQuery)
 calculateProgressBar(money)
-
-// dodac ifa z min value na inpucie, bo moge klikac non stop i pobiera mi produkt (zakomentuj set timeouta)
-// zrobic clamp na textach

@@ -64,7 +64,7 @@ nav::before {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	max-width: 144rem;
+	max-width: 111rem;
 	margin: 1rem auto 0;
 
 	&__logo {
@@ -178,7 +178,7 @@ section {
 	}
 
 	&__heading {
-		font-size: 2rem;
+		font-size: clamp(2rem, 5vw, 2.6rem);
 		text-transform: capitalize;
 		margin: 0 2rem 2rem;
 	}
