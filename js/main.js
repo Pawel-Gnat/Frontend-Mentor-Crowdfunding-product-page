@@ -68,44 +68,16 @@ const products = [
 	},
 ]
 
-productsName.forEach((product, index) => {
-	const { name } = products[index]
-	product.textContent = name
-})
-
-dialogProductsName.forEach((product, index) => {
-	const { name } = products[index]
-	product.textContent = name
-})
-
-productsPrice.forEach((price, index) => {
-	const { pledge } = products[index]
-	price.textContent = pledge
-})
-
-dialogProductsPrice.forEach((price, index) => {
-	const { pledge } = products[index]
-	price.textContent = pledge
-})
-
-productsInfo.forEach((info, index) => {
-	const { about } = products[index]
-	info.textContent = about
-})
-
-dialogProductsInfo.forEach((info, index) => {
-	const { about } = products[index]
-	info.textContent = about
-})
-
-productsStock.forEach((amount, index) => {
-	const { stock } = products[index]
-	amount.textContent = stock
-})
-
-dialogProductsStock.forEach((amount, index) => {
-	const { stock } = products[index]
-	amount.textContent = stock
+products.forEach((obj, index) => {
+	// displays my product props
+	productsName[index].textContent = obj.name
+	dialogProductsName[index].textContent = obj.name
+	productsPrice[index].textContent = obj.pledge
+	dialogProductsPrice[index].textContent = obj.pledge
+	productsInfo[index].textContent = obj.about
+	dialogProductsInfo[index].textContent = obj.about
+	productsStock[index].textContent = obj.stock
+	dialogProductsStock[index].textContent = obj.stock
 })
 
 function displayCollectedMoney(money) {
@@ -258,7 +230,7 @@ backButtons.forEach(button => {
 
 dialogContinueButtons.forEach(button => {
 	// continue button inside my main dialog
-	button.addEventListener('click', () => {
+	button.addEventListener('click', e => {
 		const inputValue = button.previousElementSibling.lastElementChild
 		const minInputValue = +inputValue.min
 		let declaredPrice = +inputValue.value
@@ -285,6 +257,10 @@ dialogContinueButtons.forEach(button => {
 			setTimeout(() => {
 				resultDialogOpen()
 			}, 1000)
+		}
+
+		if (inputValue.value == '') {
+			e.preventDefault()
 		}
 	})
 })
